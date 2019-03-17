@@ -15,7 +15,8 @@ import {
 class AuthButton extends Component {
   render() {
     // const { user } = this.props;
-    const user = { username: this.props.username };
+    const user = this.props.user;
+    console.log("[AuthButton.js] username", user);
     let buttons = (
       <li className="nav-item">
         <span className="nav-link" onClick={this.props.logout}>
@@ -41,8 +42,8 @@ class AuthButton extends Component {
 
     return (
       <ul className="navbar-nav ml-auto">
-        <span className="navbar-text">{user.username}</span>
-        {buttons}
+        <span className="navbar-text">{user ? user.username : ""}</span>
+        {user ? buttons : ""}
       </ul>
     );
   }

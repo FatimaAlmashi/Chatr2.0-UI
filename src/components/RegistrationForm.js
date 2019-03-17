@@ -25,7 +25,6 @@ class RegistationForm extends Component {
 
   submitHandler = (e, type) => {
     e.preventDefault();
-
     if (type === "signup") {
       this.props.signup(this.state, this.props.history);
     } else {
@@ -44,6 +43,7 @@ class RegistationForm extends Component {
     let errors = this.props.error.map(error => (
       <div className="text-danger">{error}</div>
     ));
+
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
         <div className="card-body">
