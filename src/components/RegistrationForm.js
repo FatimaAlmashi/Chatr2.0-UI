@@ -1,23 +1,49 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+// Actions
+import * as actionCreators from "../store/actions";
 
 class RegistationForm extends Component {
-  state = {
-    username: "",
-    password: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      type: ""
+    };
+    this.changeHandler = this.changeHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+  componentWillUnmount() {
+    this.props.resetForm();
+  }
 
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  submitHandler = e => {
+  submitHandler = (e, type) => {
     e.preventDefault();
-    alert("I don't work yet");
+
+    if (type === "signup") {
+      this.props.signup(this.state, this.props.history);
+    } else {
+      this.props.login(this.state);
+    }
   };
 
   render() {
     const type = this.props.match.url.substring(1);
+    const { username, password } = this.state;
+    const { user } = this.props;
+
+    if (user) {
+      return <Redirect to="/private" />;
+    }
+    let errors = this.props.error.map(error => (
+      <div className="text-danger">{error}</div>
+    ));
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
         <div className="card-body">
@@ -26,22 +52,30 @@ class RegistationForm extends Component {
               ? "Login to send messages"
               : "Register an account"}
           </h5>
-          <form onSubmit={this.submitHandler}>
+          {errors}
+          <form
+            onSubmit={event => {
+              this.submitHandler(event, type);
+            }}
+          >
             <div className="form-group">
               <input
                 className="form-control"
                 type="text"
                 placeholder="Username"
                 name="username"
+                value={username}
                 onChange={this.changeHandler}
               />
             </div>
+
             <div className="form-group">
               <input
                 className="form-control"
                 type="password"
                 placeholder="Password"
                 name="password"
+                value={password}
                 onChange={this.changeHandler}
               />
             </div>
@@ -67,4 +101,19 @@ class RegistationForm extends Component {
   }
 }
 
-export default RegistationForm;
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  error: state.errors.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  signup: (userData, history) =>
+    dispatch(actionCreators.signup(userData, history)),
+  login: userData => dispatch(actionCreators.login(userData)),
+  resetForm: () => dispatch(actionCreators.setErrors({}))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegistationForm);
