@@ -28,11 +28,9 @@ class SideNav extends React.Component {
               <FontAwesomeIcon icon={faPlusCircle} />
             </Link>
           </li>
-          <li>
-            <div style={{ overflowY: "scroll", overflowX: "hidden" }}>
-              {channelLinks}
-            </div>
-          </li>
+          <div style={{ overflowY: "scroll", overflowX: "hidden" }}>
+            {channelLinks}
+          </div>
         </ul>
         <ul className="navbar-nav sidenav-toggler">
           <li className="nav-item">

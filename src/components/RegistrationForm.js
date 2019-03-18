@@ -40,9 +40,12 @@ class RegistationForm extends Component {
     if (user) {
       return <Redirect to="/private" />;
     }
-    let errors = this.props.error.map(error => (
-      <div className="text-danger">{error}</div>
-    ));
+    let errors = [];
+    if (this.props.error) {
+      errors = this.props.error.map(error => (
+        <div className="text-danger">{error}</div>
+      ));
+    }
 
     return (
       <div className="card col-6 mx-auto p-0 mt-5">
@@ -52,7 +55,8 @@ class RegistationForm extends Component {
               ? "Login to send messages"
               : "Register an account"}
           </h5>
-          {errors}
+
+          {this.props.error ? errors : ""}
           <form
             onSubmit={event => {
               this.submitHandler(event, type);

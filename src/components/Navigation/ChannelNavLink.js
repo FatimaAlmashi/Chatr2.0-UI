@@ -13,12 +13,13 @@ class ChannelNavLink extends Component {
     const { user, channels } = this.props;
     const all_channels = channels.map(channel => (
       <li
+        key={channel.name}
         className="nav-item"
         data-toggle="tooltip"
         data-placement="right"
         title={channel.name}
       >
-        <NavLink className="nav-link" to={`/channels/${channel.name}`}>
+        <NavLink className="nav-link" to={`/channels/${channel.id}`}>
           <FontAwesomeIcon icon={faHashtag} />
           <span className="nav-link-text"> {channel.name}</span>
         </NavLink>

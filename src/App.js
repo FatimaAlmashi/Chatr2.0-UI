@@ -15,6 +15,7 @@ import Welcome from "./components/Welcome";
 import RegistrationForm from "./components/RegistrationForm";
 import SuperSecretPage from "./components/SuperSecretPage";
 import ChannelForm from "./components/ChannelForm";
+// import PostMessageForm from "./components/PostMessageForm";
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +23,6 @@ class App extends Component {
     this.props.fetchAllChannels();
     main();
   }
-
   render() {
     return (
       <div className="content-wrapper">
@@ -35,6 +35,12 @@ class App extends Component {
             <Route path="/(login|signup)" component={RegistrationForm} />
             <PrivateRoute path="/private" component={SuperSecretPage} />
             <PrivateRoute path="/createChannel" component={ChannelForm} />
+            {/* <PrivateRoute path="/postmessage" component={PostMessageForm} /> */}
+
+            <PrivateRoute
+              path={`/channels/:channelID/`}
+              component={SuperSecretPage}
+            />
             <Redirect to="/welcome" />
           </Switch>
         </div>

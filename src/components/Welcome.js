@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+// Actions
+// import * as actionCreators from "../store/actions";
 
 class Welcome extends Component {
   render() {
