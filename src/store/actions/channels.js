@@ -17,6 +17,12 @@ export const fetchChannels = () => {
       .catch(error => console.error(error));
   };
 };
+export const getChannelByID = channelID => {
+  return {
+    type: actionTypes.GET_CHANNEL_BY_ID,
+    payload: channelID
+  };
+};
 
 export const postChannel = newChannel => {
   return dispatch => {

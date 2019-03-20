@@ -13,9 +13,12 @@ import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import Welcome from "./components/Welcome";
 import RegistrationForm from "./components/RegistrationForm";
-import SuperSecretPage from "./components/SuperSecretPage";
+import Messages from "./components/Messages";
 import ChannelForm from "./components/ChannelForm";
-// import PostMessageForm from "./components/PostMessageForm";
+
+// New Components
+import Sidepanel from "./components/Sidepanel";
+import Content from "./components/Content";
 
 class App extends Component {
   componentDidMount() {
@@ -25,26 +28,18 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="content-wrapper">
-        <div className="col-3">
-          <NavBar />
-        </div>
-        <div className="col-9">
+      <div id="frame">
+        <Sidepanel />
+        <div className="content">
           <Switch>
             <Route path="/welcome" component={Welcome} />
             <Route path="/(login|signup)" component={RegistrationForm} />
-            <PrivateRoute path="/private" component={SuperSecretPage} />
+            <PrivateRoute path="/private" component={Content} />
             <PrivateRoute path="/createChannel" component={ChannelForm} />
-            {/* <PrivateRoute path="/postmessage" component={PostMessageForm} /> */}
-
-            <PrivateRoute
-              path={`/channels/:channelID/`}
-              component={SuperSecretPage}
-            />
+            <PrivateRoute path={`/channels/:channelID/`} component={Content} />
             <Redirect to="/welcome" />
           </Switch>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -63,3 +58,26 @@ export default withRouter(
     mapDispatchToProps
   )(App)
 );
+
+// ----------------   OLD return      ------------------
+// return (
+//   <div className="content-wrapper">
+//     <div className="col-3">
+//       <NavBar />
+//     </div>
+//     <div className="col-9">
+// <Switch>
+//   <Route path="/welcome" component={Welcome} />
+//   <Route path="/(login|signup)" component={RegistrationForm} />
+//   <PrivateRoute path="/private" component={SuperSecretPage} />
+//   <PrivateRoute path="/createChannel" component={ChannelForm} />
+//   <PrivateRoute
+//     path={`/channels/:channelID/`}
+//     component={SuperSecretPage}
+//   />
+//   <Redirect to="/welcome" />
+// </Switch>
+//     </div>
+//     <Footer />
+//   </div>
+// );

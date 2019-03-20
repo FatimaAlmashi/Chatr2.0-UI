@@ -10,6 +10,7 @@ export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   channels: channelReducer,
+  channel: channelReducer,
   messages: messageListReducer,
   message: messageListReducer
 });

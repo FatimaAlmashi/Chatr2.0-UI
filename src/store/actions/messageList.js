@@ -9,22 +9,6 @@ const instance = axios.create({
 //   type: actionTypes.SET_AUTHOR_LOADING
 // });
 
-// export const fetchMessageList = channelID => {
-//   return dispatch => {
-//     // dispatch(setLoading());
-//     instance
-//       .get(`channels/${channelID}`)
-//       .then(res => res.data)
-//       .then(messageList =>
-//         dispatch({
-//           type: actionTypes.FETCH_MESSAGE_LIST,
-//           payload: messageList
-//         })
-//       )
-//       .catch(err => console.error(err));
-//   };
-// };
-
 export const fetchMessageList = channelID => {
   return dispatch => {
     // dispatch(setLoading());

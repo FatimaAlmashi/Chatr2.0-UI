@@ -8,20 +8,29 @@ import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 class ChannelNavLink extends Component {
   render() {
     // const { channel } = this.props;
-
     // const { loading, filteredAuthors, user } = this.props;
     const { user, channels } = this.props;
     const all_channels = channels.map(channel => (
       <li
+        className="contact"
         key={channel.name}
-        className="nav-item"
         data-toggle="tooltip"
         data-placement="right"
         title={channel.name}
       >
-        <NavLink className="nav-link" to={`/channels/${channel.id}`}>
-          <FontAwesomeIcon icon={faHashtag} />
-          <span className="nav-link-text"> {channel.name}</span>
+        <NavLink className="nav-link link_color" to={`/channels/${channel.id}`}>
+          <div className="wrap">
+            <img
+              id="profile-img"
+              src="https://blog.hubspot.com/hs-fs/hub/53/file-23123745-jpg/blog/images/hashtag.jpg"
+              className="circuler_border"
+              alt=""
+            />
+            {/* <FontAwesomeIcon icon={faHashtag} /> */}
+            <div className="meta">
+              <p className="name">{channel.name}</p>
+            </div>
+          </div>
         </NavLink>
       </li>
     ));
@@ -43,17 +52,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(ChannelNavLink);
-
-// old code
-// <li
-//   className="nav-item"
-//   data-toggle="tooltip"
-//   data-placement="right"
-//   title={channel.name}
-// >
-//   {channel_obj}
-//   <NavLink className="nav-link" to={`/channels/${channel.name}`}>
-//     <FontAwesomeIcon icon={faHashtag} />
-//     <span className="nav-link-text"> {channel.name}</span>
-//   </NavLink>
-// </li>

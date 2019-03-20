@@ -16,13 +16,18 @@ class AuthButton extends Component {
   render() {
     // const { user } = this.props;
     const user = this.props.user;
-    console.log("[AuthButton.js] username", user);
+    // console.log("[AuthButton.js] username", user);
     let buttons = (
-      <li className="nav-item">
-        <span className="nav-link" onClick={this.props.logout}>
-          <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-        </span>
-      </li>
+      //   type="button"
+      //   className="btn btn-outline-secondary"
+      //   onClick={this.props.logout}
+      // >
+      //   <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+      // </span>
+
+      <button className="btn btn-outline-secondary" onClick={this.props.logout}>
+        <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+      </button>
     );
 
     if (!user) {
@@ -41,10 +46,10 @@ class AuthButton extends Component {
     }
 
     return (
-      <ul className="navbar-nav ml-auto">
-        <span className="navbar-text">{user ? user.username : ""}</span>
+      <div className="float-right mx-3">
+        <span className="mx-3">{user ? user.username : ""}</span>
         {user ? buttons : ""}
-      </ul>
+      </div>
     );
   }
 }
@@ -61,3 +66,42 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AuthButton);
+
+// ----old-------
+
+// class AuthButton extends Component {
+//   render() {
+//     // const { user } = this.props;
+//     const user = this.props.user;
+//     console.log("[AuthButton.js] username", user);
+//     let buttons = (
+//       <li className="nav-item">
+//         <span className="nav-link" onClick={this.props.logout}>
+//           <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+//         </span>
+//       </li>
+//     );
+
+//     if (!user) {
+//       buttons = [
+//         <li key="loginButton" className="nav-item">
+//           <Link to="/login" className="nav-link">
+//             <FontAwesomeIcon icon={faSignInAlt} /> Login
+//           </Link>
+//         </li>,
+//         <li key="signupButton" className="nav-item">
+//           <Link to="/signup" className="nav-link">
+//             <FontAwesomeIcon icon={faUserPlus} /> Signup
+//           </Link>
+//         </li>
+//       ];
+//     }
+
+//     return (
+//       <ul className="navbar-nav ml-auto">
+//         <span className="navbar-text">{user ? user.username : ""}</span>
+//         {user ? buttons : ""}
+//       </ul>
+//     );
+//   }
+// }

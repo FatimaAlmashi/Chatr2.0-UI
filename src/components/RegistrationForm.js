@@ -40,6 +40,7 @@ class RegistationForm extends Component {
     if (user) {
       return <Redirect to="/private" />;
     }
+
     let errors = [];
     if (this.props.error) {
       errors = this.props.error.map(error => (
@@ -92,8 +93,9 @@ class RegistationForm extends Component {
         </div>
         <div className="card-footer">
           <Link
-            to={type === "login" ? "/signup" : "/login"}
             className="btn btn-small btn-link"
+            // to={"/private"}
+            to={type === "login" ? "/signup" : "/login"}
           >
             {type === "login"
               ? "register an account"

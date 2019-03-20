@@ -1,7 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  channels: []
+  channels: [],
+  channel: null
   // filteredChannels: [],
   // loading: true
 };
@@ -14,6 +15,12 @@ const reducer = (state = initialState, action) => {
         channels: action.payload
         //   filteredChannels: action.payload,
         //   loading: false
+      };
+    case actionTypes.GET_CHANNEL_BY_ID:
+      let channelID = parseInt(action.payload);
+      return {
+        ...state,
+        channel: state.channels.find(channel => channel.id === channelID)
       };
 
     case actionTypes.POST_CHANNEL:

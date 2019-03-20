@@ -27,7 +27,7 @@ class PostMessageForm extends Component {
   };
 
   render() {
-    const message = this.props.message;
+    // const message = this.props.message;
     // const user = this.props;
 
     // if (user) {
