@@ -6,22 +6,22 @@ const instance = axios.create({
 });
 
 // const setLoading = () => ({
-//   type: actionTypes.SET_AUTHOR_LOADING
+//   type: actionTypes.SET_MESSAGES_LOADING
 // });
 
 export const fetchMessageList = channelID => {
-  return dispatch => {
+  return async dispatch => {
     // dispatch(setLoading());
-    instance
-      .get(`channels/${channelID}`)
-      .then(res => res.data)
-      .then(messageList =>
-        dispatch({
-          type: actionTypes.FETCH_MESSAGE_LIST,
-          payload: messageList
-        })
-      )
-      .catch(err => console.error(err));
+    try {
+      const res = await instance.get(`channels/${channelID}`);
+      const messageList = res.data;
+      dispatch({
+        type: actionTypes.FETCH_MESSAGE_LIST,
+        payload: messageList
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 };
 
@@ -44,20 +44,44 @@ export const fetchMessageListWithTimestamp = (channelID, timestamp) => {
 };
 
 export const postMessage = (message, channelID) => {
-  // message = {
-  //   ...message,
-  //   belongs_to_channel: [channelID]
-  // };
-  return dispatch => {
-    instance
-      .post(`channels/${channelID}/send/`, message)
-      .then(res => res.data)
-      .then(createdMessage =>
-        dispatch({
-          type: actionTypes.POST_MESSAGE,
-          payload: createdMessage
-        })
-      )
-      .catch(error => console.error(error.response.data));
+  return async dispatch => {
+    try {
+      const res = await instance.post(`channels/${channelID}/send/`, message);
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 };
+
+export const filterMessages = query => {
+  return {
+    type: actionTypes.FILTER_MESSAGES,
+    payload: query
+  };
+};
+
+// old fetch messageList
+// export const fetchMessageList = channelID => {
+//   return dispatch => {
+//     // dispatch(setLoading());
+//     instance
+//       .get(`channels/${channelID}`)
+//       .then(res => res.data)
+//       .then(messageList =>
+//         dispatch({
+//           type: actionTypes.FETCH_MESSAGE_LIST,
+//           payload: messageList
+//         })
+//       )
+//       .catch(err => console.error(err));
+//   };
+// };
+
+//  old postMessages
+// export const postMessage = (message, channelID) => {
+//   return dispatch => {
+//     instance
+//       .post(`channels/${channelID}/send/`, message)
+//       .catch(error => console.error(error.response.data));
+//   };
+// };

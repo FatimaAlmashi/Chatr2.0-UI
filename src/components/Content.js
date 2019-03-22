@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "../store/actions";
 import Messages from "./Messages";
+import hashtag from "../images/hash.png";
 
 class Content extends Component {
   async componentDidMount() {
@@ -23,11 +24,11 @@ class Content extends Component {
         {this.props.channel && (
           <div className="contact-profile float-left">
             {this.props.channel.image_url ? (
-              <img src={this.props.channel.image_url} />
+              <img src={this.props.channel.image_url} alt="" />
             ) : (
               <img
                 id="profile-img"
-                src="https://blog.hubspot.com/hs-fs/hub/53/file-23123745-jpg/blog/images/hashtag.jpg"
+                src={hashtag}
                 className="circuler_border"
                 alt=""
               />
@@ -40,6 +41,23 @@ class Content extends Component {
             <i className="fa fa-twitter" aria-hidden="true" />
             <i className="fa fa-instagram" aria-hidden="true" />
           </div> */}
+
+            {/* <div id="search" className=" float-right mx-4 my-4"> */}
+
+            <div id="search" className=" float-right mx-3">
+              {/* <label for="">
+                <i className="fa fa-search" aria-hidden="true" />
+              </label> */}
+
+              <input
+                className="form-control mr-sm-2 my-3"
+                type="search"
+                placeholder="Search"
+                onChange={event =>
+                  this.props.filterMessages(event.target.value)
+                }
+              />
+            </div>
           </div>
         )}
         <Messages />
@@ -60,7 +78,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getChannelByID: (channelID, channels) =>
-      dispatch(actionCreators.getChannelByID(channelID, channels))
+      dispatch(actionCreators.getChannelByID(channelID, channels)),
+    filterMessages: query => dispatch(actionCreators.filterMessages(query))
   };
 };
 

@@ -27,32 +27,42 @@ class ChannelForm extends Component {
 
   render() {
     return (
-      <form className="ml-5" onSubmit={this.submitChannel}>
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <span className="input-group-text">Channel Name</span>
+      <>
+        <h3 className="mb-1 my-5 mx-5">Add a New Channel</h3>
+        <form
+          className="ml-5 my-5 mx-5 justify-content-center"
+          onSubmit={this.submitChannel}
+        >
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Channel Name</span>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              onChange={this.onTextchange}
+            />
           </div>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            onChange={this.onTextchange}
-          />
-        </div>
 
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <span className="input-group-text">Image URL</span>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Image URL</span>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              name="imageUrl"
+              onChange={this.onTextchange}
+            />
           </div>
           <input
-            type="text"
-            className="form-control"
-            name="imageUrl"
-            onChange={this.onTextchange}
+            className="btn btn-outline-secondary"
+            type="submit"
+            value="Add"
           />
-        </div>
-        <input type="submit" />
-      </form>
+        </form>
+      </>
     );
   }
 }

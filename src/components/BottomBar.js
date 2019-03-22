@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
+//action
 import * as actionCreators from "../store/actions";
-
 // Fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOutAlt,
   faSignInAlt,
-  faUserPlus,
-  faPlusCircle
+  faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
 
 class BottomBar extends Component {
@@ -39,7 +37,6 @@ class BottomBar extends Component {
         </Link>
       </button>
     );
-
     const SignUpButton = (
       <button id="settings">
         <Link to="/signup" className="nav-link  link_color">
@@ -57,6 +54,7 @@ class BottomBar extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   user: state.auth.user
 });

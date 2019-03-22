@@ -8,14 +8,11 @@ import main from "./assets/js/main";
 import * as actionCreators from "./store/actions";
 
 // Components
-import NavBar from "./components/Navigation/NavBar";
-import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import Welcome from "./components/Welcome";
 import RegistrationForm from "./components/RegistrationForm";
-import Messages from "./components/Messages";
 import ChannelForm from "./components/ChannelForm";
-
+import Footer from "./components/Footer";
 // New Components
 import Sidepanel from "./components/Sidepanel";
 import Content from "./components/Content";
@@ -28,23 +25,38 @@ class App extends Component {
   }
   render() {
     return (
-      <div id="frame">
-        <Sidepanel />
-        <div className="content">
+      <div className="root">
+        {this.props.user ? (
+          <div id="frame">
+            <Sidepanel />
+            <div className="content">
+              <Switch>
+                <PrivateRoute path="/private" component={Content} />
+                <PrivateRoute path="/createChannel" component={ChannelForm} />
+                <PrivateRoute
+                  path={`/channels/:channelID/`}
+                  component={Content}
+                />
+              </Switch>
+            </div>
+          </div>
+        ) : (
           <Switch>
             <Route path="/welcome" component={Welcome} />
             <Route path="/(login|signup)" component={RegistrationForm} />
-            <PrivateRoute path="/private" component={Content} />
-            <PrivateRoute path="/createChannel" component={ChannelForm} />
-            <PrivateRoute path={`/channels/:channelID/`} component={Content} />
             <Redirect to="/welcome" />
           </Switch>
-        </div>
+        )}
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllChannels: () => dispatch(actionCreators.fetchChannels()),
@@ -54,7 +66,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 );

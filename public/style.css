@@ -30,6 +30,9 @@ img.circuler_border {
 .link_color {
   color: white !important;
 }
+.card-footer {
+  background: #95a5a6 !important;
+}
 @media screen and (max-width: 360px) {
   #frame {
     width: 100%;

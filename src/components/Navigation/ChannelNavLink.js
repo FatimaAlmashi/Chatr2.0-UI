@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import hashtag from "../../images/hash.png";
 // FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHashtag } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 
 class ChannelNavLink extends Component {
   render() {
-    // const { channel } = this.props;
-    // const { loading, filteredAuthors, user } = this.props;
     const { user, channels } = this.props;
     const all_channels = channels.map(channel => (
       <li
@@ -20,12 +19,21 @@ class ChannelNavLink extends Component {
       >
         <NavLink className="nav-link link_color" to={`/channels/${channel.id}`}>
           <div className="wrap">
-            <img
-              id="profile-img"
-              src="https://blog.hubspot.com/hs-fs/hub/53/file-23123745-jpg/blog/images/hashtag.jpg"
-              className="circuler_border"
-              alt=""
-            />
+            {channel.image_url ? (
+              <img
+                id="profile-img"
+                src={channel.image_url}
+                className="circuler_border"
+                alt=""
+              />
+            ) : (
+              <img
+                id="profile-img"
+                src={hashtag}
+                className="circuler_border"
+                alt=""
+              />
+            )}
             {/* <FontAwesomeIcon icon={faHashtag} /> */}
             <div className="meta">
               <p className="name">{channel.name}</p>
@@ -45,9 +53,9 @@ class ChannelNavLink extends Component {
 const mapStateToProps = state => {
   return {
     user: state.auth.user,
-    channels: state.channels.channels
+    channels: state.channels.filteredChannels
     //   loading: state.rootChannelss.loading,
-    //   filteredChannelss: state.rootChannels.filteredChannels,
+    //   filteredChannels: state.rootChannels.filteredChannels,
   };
 };
 

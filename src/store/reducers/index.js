@@ -11,6 +11,8 @@ export default combineReducers({
   errors: errorReducer,
   channels: channelReducer,
   channel: channelReducer,
+  filteredChannels: channelReducer,
   messages: messageListReducer,
-  message: messageListReducer
+  message: messageListReducer,
+  filteredMessages: messageListReducer
 });

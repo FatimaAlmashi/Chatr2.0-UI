@@ -49,8 +49,8 @@ class RegistationForm extends Component {
     }
 
     return (
-      <div className="card col-6 mx-auto p-0 mt-5">
-        <div className="card-body">
+      <div className="card col-6 mx-auto p-0 mt-5 justify-content-center ">
+        <div className="card-body ">
           <h5 className="card-title mb-4">
             {type === "login"
               ? "Login to send messages"
@@ -85,7 +85,7 @@ class RegistationForm extends Component {
               />
             </div>
             <input
-              className="btn btn-primary"
+              className="btn btn-outline-secondary"
               type="submit"
               value={type.replace(/^\w/, c => c.toUpperCase())}
             />
@@ -93,7 +93,7 @@ class RegistationForm extends Component {
         </div>
         <div className="card-footer">
           <Link
-            className="btn btn-small btn-link"
+            className="btn btn-small btn-link link_color"
             // to={"/private"}
             to={type === "login" ? "/signup" : "/login"}
           >

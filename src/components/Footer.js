@@ -2,13 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="sticky-footer">
-      <div className="container">
-        <div className="text-center">
-          <small>Copyright © CODED Chatr 2019</small>
-        </div>
-      </div>
-    </footer>
+    <small className="text-light col-12 w-100 justify-content-center">
+      Copyright © CODED Chatr 2019
+    </small>
   );
 };
 
