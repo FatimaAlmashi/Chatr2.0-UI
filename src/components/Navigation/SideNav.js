@@ -1,4 +1,5 @@
 import React from "react";
+
 // Components
 import ChannelNavLink from "./ChannelNavLink";
 
@@ -15,4 +16,5 @@ class SideNav extends React.Component {
     );
   }
 }
+
 export default SideNav;

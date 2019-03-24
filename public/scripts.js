@@ -58,3 +58,8 @@ $(window).on("keydown", function(e) {
   }
 });
 //# sourceURL=pen.js
+
+function scrollWin() {
+  window.scrollTo(0, 500);
+  // window.scrollTo(0, flag);
+}

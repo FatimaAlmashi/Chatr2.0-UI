@@ -12,7 +12,7 @@ const setLoading = () => ({
 
 export const fetchChannels = () => {
   return async dispatch => {
-    // dispatch(setLoading());
+    dispatch(setLoading());
     try {
       const res = await instance.get("channels/");
       const channels = res.data;
@@ -34,17 +34,17 @@ export const getChannelByID = channelID => {
 };
 
 export const postChannel = newChannel => {
-  return dispatch => {
-    instance
-      .post("channels/create/", newChannel)
-      .then(res => res.data)
-      .then(createdChannel =>
-        dispatch({
-          type: actionTypes.POST_CHANNEL,
-          payload: createdChannel
-        })
-      )
-      .catch(error => console.error(error.response.data));
+  return async dispatch => {
+    try {
+      const res = await instance.post("channels/create/", newChannel);
+      const createdChannel = res.data;
+      dispatch({
+        type: actionTypes.POST_CHANNEL,
+        payload: createdChannel
+      });
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 };
 
@@ -79,5 +79,21 @@ export const filterChannels = query => {
 //         dispatch({ type: actionTypes.FETCH_CHANNELS, payload: channels })
 //       )
 //       .catch(error => console.error(error));
+//   };
+// };
+
+// old post channel
+// export const postChannel = newChannel => {
+//   return dispatch => {
+//     instance
+//       .post("channels/create/", newChannel)
+//       .then(res => res.data)
+//       .then(createdChannel =>
+//         dispatch({
+//           type: actionTypes.POST_CHANNEL,
+//           payload: createdChannel
+//         })
+//       )
+//       .catch(error => console.error(error.response.data));
 //   };
 // };

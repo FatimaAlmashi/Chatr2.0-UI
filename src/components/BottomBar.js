@@ -25,8 +25,10 @@ class BottomBar extends Component {
     );
     const logoutButton = (
       <button id="settings" onClick={this.props.logout}>
+        {/* <Link to="/welcome" className=" link_color nav-link"> */}
         <FontAwesomeIcon icon={faSignOutAlt} />
         <span>Logout</span>
+        {/* </Link> */}
       </button>
     );
     const LogInButton = (

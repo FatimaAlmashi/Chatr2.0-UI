@@ -71,7 +71,6 @@ const mapStateToProps = state => {
     user: state.auth.user,
     channels: state.channels,
     channel: state.channel.channel
-    // loading: state.rootAuthor.loading,
   };
 };
 

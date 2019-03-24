@@ -5,13 +5,13 @@ const instance = axios.create({
   baseURL: "https://api-chatr.herokuapp.com/"
 });
 
-// const setLoading = () => ({
-//   type: actionTypes.SET_MESSAGES_LOADING
-// });
+const setLoading = () => ({
+  type: actionTypes.SET_MESSAGES_LOADING
+});
 
 export const fetchMessageList = channelID => {
   return async dispatch => {
-    // dispatch(setLoading());
+    dispatch(setLoading());
     try {
       const res = await instance.get(`channels/${channelID}`);
       const messageList = res.data;

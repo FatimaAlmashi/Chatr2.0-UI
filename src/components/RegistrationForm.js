@@ -49,58 +49,66 @@ class RegistationForm extends Component {
     }
 
     return (
-      <div className="card col-6 mx-auto p-0 mt-5 justify-content-center ">
-        <div className="card-body ">
-          <h5 className="card-title mb-4">
-            {type === "login"
-              ? "Login to send messages"
-              : "Register an account"}
-          </h5>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          padding: "10%",
+          textAlign: "center"
+        }}
+      >
+        <div className="card col-6 mx-auto p-0 mt-5 ">
+          <div className="card-body ">
+            <h5 className="card-title mb-4">
+              {type === "login"
+                ? "Login to send messages"
+                : "Register an account"}
+            </h5>
 
-          {this.props.error ? errors : ""}
-          <form
-            onSubmit={event => {
-              this.submitHandler(event, type);
-            }}
-          >
-            <div className="form-group">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={username}
-                onChange={this.changeHandler}
-              />
-            </div>
+            {this.props.error ? errors : ""}
+            <form
+              onSubmit={event => {
+                this.submitHandler(event, type);
+              }}
+            >
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={username}
+                  onChange={this.changeHandler}
+                />
+              </div>
 
-            <div className="form-group">
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={this.changeHandler}
+                />
+              </div>
               <input
-                className="form-control"
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={this.changeHandler}
+                className="btn btn-outline-secondary"
+                type="submit"
+                value={type.replace(/^\w/, c => c.toUpperCase())}
               />
-            </div>
-            <input
-              className="btn btn-outline-secondary"
-              type="submit"
-              value={type.replace(/^\w/, c => c.toUpperCase())}
-            />
-          </form>
-        </div>
-        <div className="card-footer">
-          <Link
-            className="btn btn-small btn-link link_color"
-            // to={"/private"}
-            to={type === "login" ? "/signup" : "/login"}
-          >
-            {type === "login"
-              ? "register an account"
-              : "login with an existing account"}
-          </Link>
+            </form>
+          </div>
+          <div className="card-footer">
+            <Link
+              className="btn btn-small btn-link link_color"
+              to={type === "login" ? "/signup" : "/login"}
+            >
+              {type === "login"
+                ? "register an account"
+                : "login with an existing account"}
+            </Link>
+          </div>
         </div>
       </div>
     );

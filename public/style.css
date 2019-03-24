@@ -31,8 +31,16 @@ img.circuler_border {
   color: white !important;
 }
 .card-footer {
-  background: #95a5a6 !important;
+  background: #32465a !important;
 }
+.loading_style {
+  justify-content: center !important;
+}
+.popup-box {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 @media screen and (max-width: 360px) {
   #frame {
     width: 100%;
@@ -103,7 +111,7 @@ img.circuler_border {
   padding: 3px;
   border: 2px solid #95a5a6;
   height: auto;
-  float: left;
+  /* float: left; */
   cursor: pointer;
   -moz-transition: 0.3s border ease;
   -o-transition: 0.3s border ease;
@@ -130,7 +138,7 @@ img.circuler_border {
 } */
 
 #frame #sidepanel #profile .wrap p {
-  float: left;
+  /* float: left; */
   margin-left: 15px;
 }
 @media screen and (max-width: 735px) {
@@ -139,7 +147,7 @@ img.circuler_border {
   }
 }
 #frame #sidepanel #profile .wrap i.expand-button {
-  float: right;
+  /* float: right; */
   margin-top: 23px;
   font-size: 0.8em;
   cursor: pointer;
@@ -350,7 +358,7 @@ img.circuler_border {
   line-height: initial !important;
 }
 #frame #sidepanel #profile .wrap #expanded label {
-  float: left;
+  /* float: left; */
   clear: both;
   margin: 0 8px 5px 0;
   padding: 5px 0;
@@ -644,7 +652,7 @@ img.circuler_border {
 #frame .content .messages ul li {
   display: inline-block;
   clear: both;
-  float: left;
+  /* float: left; */
   margin: 15px 15px 5px 15px;
   width: calc(100% - 25px);
   font-size: 0.9em;
@@ -653,7 +661,8 @@ img.circuler_border {
   margin-bottom: 20px;
 }
 #frame .content .messages ul li.sent img {
-  margin: 6px 8px 0 0;
+  /* margin: 6px 8px 0 0; */
+  margin: 0px;
 }
 #frame .content .messages ul li.sent p {
   background: #435f7a;
@@ -661,12 +670,23 @@ img.circuler_border {
 }
 #frame .content .messages ul li.replies img {
   float: right;
-  margin: 6px 0 0 8px;
+  /* margin: 6px 0 0 8px; */
+  margin: 0px;
 }
 #frame .content .messages ul li.replies p {
   background: #f5f5f5;
   float: right;
 }
+
+#frame .content .messages ul span.replies {
+  float: right;
+  margin: 6px 0 0 8px;
+}
+#frame .content .messages ul p.replies {
+  float: right;
+  margin: 6px 0 0 8px;
+}
+
 #frame .content .messages ul li img {
   width: 22px;
   border-radius: 50%;
@@ -695,7 +715,7 @@ img.circuler_border {
 }
 #frame .content .message-input .wrap input {
   font-family: "proxima-nova", "Source Sans Pro", sans-serif;
-  float: left;
+  /* float: left; */
   border: none;
   width: calc(100% - 90px);
   padding: 11px 32px 10px 8px;

@@ -16,9 +16,15 @@ class Sidepanel extends Component {
               src={userImage}
               className="circuler_border"
               alt=""
-            />
-            {/* <i class="fas fa-user-tie" width="200px" /> */}
-            {this.props.user && <p>{this.props.user.username}</p>}
+            />{" "}
+            {this.props.user && (
+              <span style={{ fontWeight: "bold" }}>
+                <span style={{ color: "#95a5a6", fontWeight: "normal" }}>
+                  welcome :
+                </span>{" "}
+                {this.props.user.username}
+              </span>
+            )}
           </div>
         </div>
         <div id="search">
@@ -27,7 +33,7 @@ class Sidepanel extends Component {
           </label>
           <input
             type="text"
-            placeholder="Search contacts..."
+            placeholder="Search channels..."
             onChange={event => this.props.filterChannels(event.target.value)}
           />
         </div>

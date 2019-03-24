@@ -27,12 +27,16 @@ class ChannelForm extends Component {
 
   render() {
     return (
-      <>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          paddingTop: "20%",
+          textAlign: "center"
+        }}
+      >
         <h3 className="mb-1 my-5 mx-5">Add a New Channel</h3>
-        <form
-          className="ml-5 my-5 mx-5 justify-content-center"
-          onSubmit={this.submitChannel}
-        >
+        <form className="ml-5 my-5 mx-5" onSubmit={this.submitChannel}>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
               <span className="input-group-text">Channel Name</span>
@@ -62,7 +66,7 @@ class ChannelForm extends Component {
             value="Add"
           />
         </form>
-      </>
+      </div>
     );
   }
 }

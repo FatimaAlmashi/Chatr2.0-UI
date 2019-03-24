@@ -3,8 +3,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   channels: [],
   channel: null,
-  filteredChannels: []
-  // loading: true
+  filteredChannels: [],
+  ch_loading: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,9 +13,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         channels: action.payload,
-        filteredChannels: action.payload
-        //   loading: false
+        filteredChannels: action.payload,
+        ch_loading: false
       };
+
     case actionTypes.GET_CHANNEL_BY_ID:
       let channelID = parseInt(action.payload);
       return {
@@ -29,8 +30,6 @@ const reducer = (state = initialState, action) => {
         channels: [action.payload].concat(state.channels),
         filteredChannels: [action.payload].concat(state.channels)
       };
-    default:
-      return state;
 
     case actionTypes.FILTER_CHANNELS:
       return {
@@ -39,6 +38,15 @@ const reducer = (state = initialState, action) => {
           return channel.name.toLowerCase().includes(action.payload);
         })
       };
+
+    case actionTypes.SET_CHANNEL_LOADING:
+      return {
+        ...state,
+        ch_loading: true
+      };
+
+    default:
+      return state;
   }
 };
 export default reducer;

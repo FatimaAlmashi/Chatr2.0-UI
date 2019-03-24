@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import chatrLogo from "../images/chatrLogo.png";
 
 class Welcome extends Component {
   render() {
     return (
-      <header className="masthead d-flex">
-        <div className="container text-center my-auto z-1">
+      <header className="masthead d-flex my-5">
+        <div className="container text-center my-auto z-1 my-5">
+          <div className="w-100" style={{ paddingTop: "30px" }}>
+            <img src={chatrLogo} alt="" style={{ height: "17%" }} />
+          </div>
+          <hr style={{ width: "70%" }} />
           <h1 className="mb-1 my-5">WELCOME TO CHATR</h1>
           <h3 className="mb-3">
             <em className="">You're gonna need to login to see the messages</em>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import hashtag from "../../images/hash.png";
+import Loading from "../Loading";
+
 // FontAwesome
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHashtag } from "@fortawesome/free-solid-svg-icons";
@@ -43,19 +45,19 @@ class ChannelNavLink extends Component {
       </li>
     ));
 
-    // if (loading) {
-    //   return <Loading />;
-    // } else {
-    return <div>{user && all_channels}</div>;
+    if (this.props.ch_loading) {
+      return <Loading />;
+    } else {
+      return <div>{user && all_channels}</div>;
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
     user: state.auth.user,
-    channels: state.channels.filteredChannels
-    //   loading: state.rootChannelss.loading,
-    //   filteredChannels: state.rootChannels.filteredChannels,
+    channels: state.channels.filteredChannels,
+    ch_loading: state.channels.ch_loading
   };
 };
 

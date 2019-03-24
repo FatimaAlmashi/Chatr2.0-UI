@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 // Actions
 import * as actionCreators from "../store/actions";
@@ -27,9 +26,6 @@ class PostMessageForm extends Component {
   };
 
   render() {
-    // if (user) {
-    //   return <Redirect to="/private" />;
-    // }
     return (
       <form
         className="message-input"
@@ -40,7 +36,7 @@ class PostMessageForm extends Component {
         <div className="wrap">
           <input
             type="text"
-            placeholder="Write your message..."
+            placeholder="Type a message..."
             name="message"
             onChange={this.changeHandler}
           />
@@ -50,24 +46,6 @@ class PostMessageForm extends Component {
           </button>
         </div>
       </form>
-
-      // <form
-      //   className="card col-6 mx-auto p-0 mt-5"
-      //   onSubmit={event => {
-      //     this.submitHandler(event);
-      //   }}
-      // >
-      //   <div className="form-group">
-      //     <input
-      //       className="form-control"
-      //       type="text"
-      //       placeholder="message_text"
-      //       name="message"
-      //       onChange={this.changeHandler}
-      //     />
-      //   </div>
-      //   <input className="btn btn-primary" type="submit" value="Post" />
-      // </form>
     );
   }
 }
@@ -85,13 +63,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PostMessageForm);
-
-//  <div className="message-input">
-// <div className="wrap">
-//   <input type="text" placeholder="Write your message..." />
-//   <i className="fa fa-paperclip attachment" aria-hidden="true" />
-//   <button className="submit">
-//     <i className="fa fa-paper-plane" aria-hidden="true" />
-//   </button>
-// </div>
-// </div>
